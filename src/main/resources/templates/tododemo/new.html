@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layouts/application">
+<head>
+</head>
+<body>
+<div layout:fragment="contents">
+  <div class="card">
+    <div class="card-header">
+      <h3>todo新規作成</h3>
+    </div>
+    <div class="card-body">
+      <div layout:replace="~{tododemo/todo_form::todo_form}"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

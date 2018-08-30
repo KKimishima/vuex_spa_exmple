@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="list_table">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">タイトル</th>
+      <th scope="col">進行状態</th>
+      <th scope="col">担当者</th>
+      <th scope="col">期限日時</th>
+      <th scope="col">期限日時</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${page.content}">
+      <th scope="row" th:text="${item.id}"></th>
+      <td><a th:text="${item.title}" th:href="@{'/demo/show/' + ${item.id}}"></a></td>
+      <td th:text="${item.todoProgress.progressName}"></td>
+      <td th:text="${item.users.name}"></td>
+      <td th:text="${#dates.format(item.limitDate,'yyyy年MM月dd日')}"></td>
+      <td th:text="${#dates.format(item.limitTime,' HH時MM分')}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

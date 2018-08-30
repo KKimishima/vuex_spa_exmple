@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layouts/application">
+<head>
+</head>
+<body>
+<div layout:fragment="contents">
+  <div class="card">
+    <div class="card-header">
+      <h3>todolist一覧</h3>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">一覧テーブル</h5>
+      <a href="#" class="btn-outline-primary btn" role="button" th:href="@{'/demo/new'}">新規作成</a>
+      <button type="button" class="btn-outline-primary btn" data-toggle="collapse" data-target="#todo-list-search" aria-expanded="false" aria-controls="todo-list-search">
+        検索条件
+      </button>
+      <div layout:replace="~{tododemo/search_from::search_from}"></div>
+      <div layout:replace="~{tododemo/list_table::list_table}"></div>
+      <div layout:replace="~{tododemo/pagination::pagination}"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

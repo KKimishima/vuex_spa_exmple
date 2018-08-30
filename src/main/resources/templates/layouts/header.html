@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="header">
+  <header class="sticky-top">
+    <div class="navbar navbar-dark bg-dark box-shadow">
+      <div class="container d-flex justify-content-between">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+          <strong>TodoListデモアプリ</strong>
+        </a>
+      </div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/spa">SPAモード <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </header>
+</div>
+</body>
+</html>

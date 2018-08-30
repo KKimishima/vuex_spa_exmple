@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Vueを使ったtodoリストアプリ</title>
+  <script src="/js/bundle.js"></script>
+</head>
+<body>
+
+<div layout:replace="~{layouts/header::header}"></div>
+<div class="container">
+  <div layout:fragment="contents">固有のHTMLで書き換える</div>
+</div>
+
+<div layout:replace="~{layouts/footer::footer}"></div>
+
+
+</body>
+</html>

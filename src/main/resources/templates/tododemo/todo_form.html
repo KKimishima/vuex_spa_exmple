@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+</head>
+<body>
+<div layout:fragment="todo_form">
+  <form th:action="${action}" method="POST" th:object="${todoList}">
+
+    <div class="form-group" >
+      <p th:if="${#fields.hasErrors('*{title}')}" th:errors="*{title}" class="col-sm-offset-2 text-danger"></p>
+      <label for="todo-title">タイトル</label>
+      <input type="text" th:field="*{title}" class="form-control" id="todo-title" placeholder="todoのタイトル" required>
+    </div>
+
+    <div class="form-group">
+      <p th:if="${#fields.hasErrors('*{describe}')}" th:errors="*{describe}" class="col-sm-offset-2 text-danger"></p>
+      <label for="todo-describe">詳細説明</label>
+      <textarea rows="5" th:field="*{describe}" class="form-control" id="todo-describe" placeholder="todoの説明"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="todo-progress">進行状態</label>
+      <select th:field="*{todoProgress}" id="todo-progress" class="form-control">
+        <div th:each="item : ${progress}">
+          <option  th:value="${item.id}" th:text="${item.progressName}"></option>
+        </div>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <p th:if="${#fields.hasErrors('*{limitDate}')}" th:errors="*{limitDate}" class="col-sm-offset-2 text-danger"></p>
+      <label for="todo-limit-date">期限日程</label>
+      <input th:field="*{limitDate}" class="form-control" id="todo-limit-date" type="date" required>
+    </div>
+
+    <div class="form-group">
+      <p th:if="${#fields.hasErrors('*{limitTime}')}" th:errors="*{limitTime}" class="col-sm-offset-2 text-danger"></p>
+      <label for="todo-limit-time">期限日時</label>
+      <input th:field="*{limitTime}" class="form-control" id="todo-limit-time" type="time">
+    </div>
+
+
+    <input  type="hidden"  name="users" th:value="${userId}">
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" name="_method" th:value="${method}">
+
+    <button id="on-click" type="submit" class="btn btn-primary">登録</button>
+  </form>
+  <script>
+    document.getElementById("on-click").addEventListener("click",()=>{
+      let time =  document.getElementById("todo-limit-time").value
+      if (time === ""){return}
+      document.getElementById("todo-limit-time").value += ":00"
+    })
+  </script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="search_from">
+
+  <div class="collapse" id="todo-list-search">
+    <form th:object="${todoSearch}" action="/demo/search" method="get">
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">タイトル</span>
+        </div>
+        <input th:field="*{title}" type="text" class="form-control" id="todo-title-search" placeholder="タイトル">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">説明</span>
+        </div>
+        <input th:field="*{describe}" type="text" class="form-control" id="todo-describe-search" placeholder="説明">
+      </div>
+
+      <div class="input-group ">
+        <div class="input-group-prepend">
+          <span class="input-group-text">期限日時</span>
+        </div>
+        <input th:field="*{minDate}" id="todo-limit-datemin-search" class="form-control" type="date">
+        <div class="input-group-prepend">
+          <span class="input-group-text">~</span>
+        </div>
+        <input th:field="*{maxDate}" id="todo-limit-datemax-search" class="form-control" type="date">
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group col-md-4">
+          <label for="todo-progress-search">進行状態</label>
+          <select th:field="*{progressId}" class="form-control" id="todo-progress-search">
+            <option value="">-</option>
+            <option th:each="list : ${progress}" th:value="${list.id}" th:text="${list.progressName}"></option>
+          </select>
+        </div>
+
+        <!--<div class="form-group col-md-4">-->
+        <!--<label for="todo-progress-search-a">並び替え順</label>-->
+        <!--<select class="form-control" id="todo-progress-search-a">-->
+        <!--<option value="hoge1">hoge1</option>-->
+        <!--<option value="hoge2">hoge2</option>-->
+        <!--<option value="hoge3">hoge3</option>-->
+        <!--</select>-->
+        <!--</div>-->
+
+        <!--<div class="form-group col-md-4">-->
+        <!--<label for="todo-progress-search-b">表示ページ数</label>-->
+        <!--<select class="form-control" id="todo-progress-search-b">-->
+        <!--<option value="hoge1">hoge1</option>-->
+        <!--<option value="hoge2">hoge2</option>-->
+        <!--<option value="hoge3">hoge3</option>-->
+        <!--</select>-->
+        <!--</div>-->
+
+      </div>
+
+      <button type="submit" class="btn btn-primary">検索</button>
+    </form>
+  </div>
+
+</div>
+</body>
+</html>
